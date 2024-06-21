@@ -1,0 +1,9 @@
+#calculator-buttons {
+	display: flex;
+	flex-wrap: wrap;
+	width: 200px;
+}
+
+#calculator-buttons button {
+	flex-basis: 25%;
+}
