@@ -30,7 +30,12 @@ function operate(operator, num1, num2) {
       result = multiply(num1, num2);
       break;
     case "/":
-      result = divide(num1, num2);
+      if (num2 === 0) {
+        populateDisplay("brother");
+        return;
+      } else {
+        result = divide(num1, num2);
+      }
       break;
   }
   populateDisplay(result);
@@ -40,7 +45,11 @@ function operate(operator, num1, num2) {
 
 function populateDisplay(value) {
   const display = document.querySelector("#calculator-display");
-  display.textContent = Math.round(value * 10) / 10;
+  if (isNaN(value)) {
+    display.textContent = value;
+  } else {
+    display.textContent = Math.round(value * 10) / 10;
+  }
 }
 
 function updateNumber(value) {
@@ -71,13 +80,14 @@ function updateOperator(value) {
 function clearCalculator() {
   firstNumber = null;
   secondNumber = null;
+  operator = null;
   updatingFirstNumber = true;
   populateDisplay(0);
 }
 
 let firstNumber = null;
 let secondNumber = null;
-let operator;
+let operator = null;
 let updatingFirstNumber = true;
 
 const buttonContainer = document.querySelector("#calculator-buttons");
