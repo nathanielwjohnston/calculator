@@ -32,23 +32,47 @@ function operate(operator, firstNumber, secondNumber) {
   }
 }
 
-function populateDisplay(button, value) {
+function populateDisplay(value) {
   const display = document.querySelector("#calculator-display");
-  if (button.dataset.buttonType === "number") {
-      display.textContent = value;
-      displayValue = value;
-  };
+  display.textContent = value;
+  displayValue = value;
 }
 
-let firstNumber;
-let secondNumber;
+function updateNumber(value) {
+  if (updatingFirstNumber === true) {
+    if (firstNumber === null) {
+      firstNumber = value;
+    } else {
+      firstNumber += value;
+    }
+  } else {
+    if (secondNumber === null) {
+      secondNumber = value;
+    } else {
+      secondNumber += value;
+    }
+  }
+}
+
+function updateOperator(value) {
+  operator = value;
+}
+
+let firstNumber = null;
+let secondNumber = null;
 let operator;
 let displayValue;
+let updatingFirstNumber = true;
 
 const buttonContainer = document.querySelector("#calculator-buttons");
 
 buttonContainer.addEventListener("click", e => {
   const button = e.target;
   const value = button.dataset.value
-  populateDisplay(button, value);
+  if (button.dataset.buttonType === "number") {
+    populateDisplay(value);
+    updateNumber(value);
+  } else if (button.dataset.buttonType === "operator") {
+    updateOperator(value);
+  }
 })
