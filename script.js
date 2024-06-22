@@ -82,6 +82,9 @@ buttonContainer.addEventListener("click", e => {
   if (type === "number") {
     updateNumber(value);
   } else if (type === "operator") {
+    if (firstNumber !== null && secondNumber !== null) {
+      operate(operator, firstNumber, secondNumber);
+    }
     updateOperator(value);
   } else if (type === "equals") {
     if (firstNumber !== null && secondNumber !== null) {
