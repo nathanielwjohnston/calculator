@@ -55,6 +55,9 @@ function updateNumber(value) {
 }
 
 function updateOperator(value) {
+  if (updatingFirstNumber === true) {
+      updatingFirstNumber = false;  
+  }
   operator = value;
 }
 
