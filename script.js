@@ -37,7 +37,6 @@ function operate(operator, firstNumber, secondNumber) {
 function populateDisplay(value) {
   const display = document.querySelector("#calculator-display");
   display.textContent = value;
-  displayValue = value;
 }
 
 function updateNumber(value) {
@@ -47,12 +46,14 @@ function updateNumber(value) {
     } else {
       firstNumber += value;
     }
+    populateDisplay(firstNumber);
   } else {
     if (secondNumber === null) {
       secondNumber = value;
     } else {
       secondNumber += value;
     }
+    populateDisplay(secondNumber);
   }
 }
 
@@ -66,7 +67,6 @@ function updateOperator(value) {
 let firstNumber = null;
 let secondNumber = null;
 let operator;
-let displayValue;
 let updatingFirstNumber = true;
 
 const buttonContainer = document.querySelector("#calculator-buttons");
@@ -76,7 +76,6 @@ buttonContainer.addEventListener("click", e => {
   const value = button.dataset.value;
   const type = button.dataset.buttonType;
   if (type === "number") {
-    populateDisplay(value);
     updateNumber(value);
   } else if (type === "operator") {
     updateOperator(value);
