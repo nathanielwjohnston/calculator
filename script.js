@@ -33,10 +33,10 @@ function operate(operator, firstNumber, secondNumber) {
 }
 
 function populateDisplay(button, value) {
-    const display = document.querySelector("#calculator-display");
-    if (button.dataset.buttonType === "number") {
-        display.textContent = value;
-    };
+  const display = document.querySelector("#calculator-display");
+  if (button.dataset.buttonType === "number") {
+      display.textContent = value;
+  };
 }
 
 let firstNumber;
@@ -47,8 +47,8 @@ let displayValue;
 const buttonContainer = document.querySelector("#calculator-buttons");
 
 buttonContainer.addEventListener("click", e => {
-    const button = e.target;
-    const value = button.dataset.value
-    populateDisplay(button, value);
-    displayValue = value;
+  const button = e.target;
+  const value = button.dataset.value
+  populateDisplay(button, value);
+  displayValue = value;
 })
