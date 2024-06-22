@@ -73,7 +73,7 @@ const buttonContainer = document.querySelector("#calculator-buttons");
 
 buttonContainer.addEventListener("click", e => {
   const button = e.target;
-  const value = button.dataset.value
+  const value = button.dataset.value;
   const type = button.dataset.buttonType;
   if (type === "number") {
     populateDisplay(value);
