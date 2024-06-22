@@ -74,12 +74,13 @@ const buttonContainer = document.querySelector("#calculator-buttons");
 buttonContainer.addEventListener("click", e => {
   const button = e.target;
   const value = button.dataset.value
-  if (button.dataset.buttonType === "number") {
+  const type = button.dataset.buttonType;
+  if (type === "number") {
     populateDisplay(value);
     updateNumber(value);
-  } else if (button.dataset.buttonType === "operator") {
+  } else if (type === "operator") {
     updateOperator(value);
-  } else if (button.dataset.buttonType === "equals") {
+  } else if (type === "equals") {
     if (firstNumber !== null && secondNumber !== null) {
       operate(operator, firstNumber, secondNumber);
     }
