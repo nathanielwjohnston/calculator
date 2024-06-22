@@ -68,6 +68,13 @@ function updateOperator(value) {
   operator = value;
 }
 
+function clearCalculator() {
+  firstNumber = null;
+  secondNumber = null;
+  updatingFirstNumber = true;
+  populateDisplay(0);
+}
+
 let firstNumber = null;
 let secondNumber = null;
 let operator;
@@ -90,5 +97,7 @@ buttonContainer.addEventListener("click", e => {
     if (firstNumber !== null && secondNumber !== null) {
       operate(operator, firstNumber, secondNumber);
     }
+  } else if (type === "clear") {
+    clearCalculator();
   }
 })
