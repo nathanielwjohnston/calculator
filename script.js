@@ -16,18 +16,20 @@ function divide(a,b) {
 
 // calls an operator function based on input
 function operate(operator, firstNumber, secondNumber) {
+  firstNumber = parseInt(firstNumber);
+  secondNumber = parseInt(secondNumber);
   switch (operator) {
   case "+":
-    add(firstNumber, secondNumber);
+    console.log(add(firstNumber, secondNumber));
     break;
   case "-":
-    subtract(firstNumber, secondNumber);
+    console.log(subtract(firstNumber, secondNumber));
     break;
   case "*":
-    multiply(firstNumber, secondNumber);
+    console.log(multiply(firstNumber, secondNumber));
     break;
   case "/":
-    divide(firstNumber, secondNumber);
+    console.log(divide(firstNumber, secondNumber));
     break;
   }
 }
@@ -77,5 +79,9 @@ buttonContainer.addEventListener("click", e => {
     updateNumber(value);
   } else if (button.dataset.buttonType === "operator") {
     updateOperator(value);
+  } else if (button.dataset.buttonType === "equals") {
+    if (firstNumber !== null && secondNumber !== null) {
+      operate(operator, firstNumber, secondNumber);
+    }
   }
 })
