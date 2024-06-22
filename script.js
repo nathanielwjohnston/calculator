@@ -15,23 +15,27 @@ function divide(a,b) {
 }
 
 // calls an operator function based on input
-function operate(operator, firstNumber, secondNumber) {
-  firstNumber = parseInt(firstNumber);
-  secondNumber = parseInt(secondNumber);
+function operate(operator, num1, num2) {
+  num1 = parseInt(num1);
+  num2 = parseInt(num2);
+  let result;
   switch (operator) {
-  case "+":
-    console.log(add(firstNumber, secondNumber));
-    break;
-  case "-":
-    console.log(subtract(firstNumber, secondNumber));
-    break;
-  case "*":
-    console.log(multiply(firstNumber, secondNumber));
-    break;
-  case "/":
-    console.log(divide(firstNumber, secondNumber));
-    break;
+    case "+":
+      result = add(num1, num2);
+      break;
+    case "-":
+      result = subtract(num1, num2);
+      break;
+    case "*":
+      result = multiply(num1, num2);
+      break;
+    case "/":
+      result = divide(num1, num2);
+      break;
   }
+  populateDisplay(result);
+  firstNumber = result;
+  secondNumber = null;
 }
 
 function populateDisplay(value) {
