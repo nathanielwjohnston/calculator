@@ -40,7 +40,7 @@ function operate(operator, num1, num2) {
 
 function populateDisplay(value) {
   const display = document.querySelector("#calculator-display");
-  display.textContent = value;
+  display.textContent = Math.round(value * 10) / 10;
 }
 
 function updateNumber(value) {
