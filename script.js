@@ -109,5 +109,13 @@ buttonContainer.addEventListener("click", e => {
     }
   } else if (type === "clear") {
     clearCalculator();
+  } else if (type === "backspace") {
+    if (updatingFirstNumber && firstNumber !== null) {
+      firstNumber = firstNumber.slice(0, (firstNumber.length - 1));
+      populateDisplay(firstNumber);
+    } else if (secondNumber !== null) {
+      secondNumber = secondNumber.slice(0, (secondNumber.length - 1));
+      populateDisplay(secondNumber);
+    }
   }
 })
