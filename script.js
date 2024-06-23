@@ -97,6 +97,7 @@ buttonContainer.addEventListener("click", e => {
   const value = button.dataset.value;
   const type = button.dataset.buttonType;
   if (type === "number") {
+    // Check to prevent adding onto the end of a result after pressing equals
     if (operator === null && updatingFirstNumber === false) {
       firstNumber = null;
       updatingFirstNumber = true;
@@ -110,6 +111,8 @@ buttonContainer.addEventListener("click", e => {
   } else if (type === "equals") {
     if (firstNumber !== null && secondNumber !== null) {
       operate(operator, firstNumber, secondNumber);
+      // Prevents reusing the same operator from the last operation if a number
+      // is pressed directly after equals
       operator = null;
     }
   } else if (type === "clear") {
