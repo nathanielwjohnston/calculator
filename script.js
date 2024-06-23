@@ -44,12 +44,14 @@ function operate(operator, num1, num2) {
 }
 
 function populateDisplay(value) {
+  value = value.toString();
   const display = document.querySelector("#calculator-display");
-  if (isNaN(value)) {
-    display.textContent = value;
-  } else {
-    display.textContent = Math.round(value * 10) / 10;
+  if (value.charAt(0) === ".") {
+    value = "0" + value;
+  } else if (!isNaN(value) && !value.includes(".")){
+    value = Math.round(value * 10) / 10;
   }
+  display.textContent = value;
 }
 
 function updateNumber(value) {
