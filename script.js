@@ -53,7 +53,7 @@ function populateDisplay(value) {
 }
 
 function updateNumber(value) {
-  if (updatingFirstNumber === true) {
+  if (updatingFirstNumber) {
     if (firstNumber === null) {
       firstNumber = value;
     } else {
@@ -71,7 +71,7 @@ function updateNumber(value) {
 }
 
 function updateOperator(value) {
-  if (updatingFirstNumber === true) {
+  if (updatingFirstNumber) {
       updatingFirstNumber = false;  
   }
   operator = value;
