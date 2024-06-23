@@ -97,6 +97,10 @@ buttonContainer.addEventListener("click", e => {
   const value = button.dataset.value;
   const type = button.dataset.buttonType;
   if (type === "number") {
+    if (operator === null && updatingFirstNumber === false) {
+      firstNumber = null;
+      updatingFirstNumber = true;
+    }
     updateNumber(value);
   } else if (type === "operator") {
     if (firstNumber !== null && secondNumber !== null) {
@@ -106,6 +110,7 @@ buttonContainer.addEventListener("click", e => {
   } else if (type === "equals") {
     if (firstNumber !== null && secondNumber !== null) {
       operate(operator, firstNumber, secondNumber);
+      operator = null;
     }
   } else if (type === "clear") {
     clearCalculator();
