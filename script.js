@@ -47,7 +47,7 @@ function populateDisplay(value, isResult) {
   value = value.toString();
   const display = document.querySelector("#calculator-display");
   if (isResult && !isNaN(value)) {
-    value = parseFloat(value).toFixed(2);
+    value = parseFloat(parseFloat(value).toFixed(2));
   } else if (value.charAt(0) === ".") {
     value = "0" + value;
   }
