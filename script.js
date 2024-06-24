@@ -31,25 +31,25 @@ function operate(operator, num1, num2) {
       break;
     case "/":
       if (num2 === 0) {
-        populateDisplay("brother");
+        populateDisplay("brother", true);
         return;
       } else {
         result = divide(num1, num2);
       }
       break;
   }
-  populateDisplay(result);
+  populateDisplay(result, true);
   firstNumber = result;
   secondNumber = null;
 }
 
-function populateDisplay(value) {
+function populateDisplay(value, isResult) {
   value = value.toString();
   const display = document.querySelector("#calculator-display");
-  if (value.charAt(0) === ".") {
+  if (isResult && !isNaN(value)) {
+    value = parseFloat(value).toFixed(2);
+  } else if (value.charAt(0) === ".") {
     value = "0" + value;
-  } else if (!isNaN(value) && !value.includes(".")){
-    value = Math.round(value * 10) / 10;
   }
   display.textContent = value;
 }
@@ -61,14 +61,14 @@ function updateNumber(value) {
     } else {
       firstNumber += value;
     }
-    populateDisplay(firstNumber);
+    populateDisplay(firstNumber, false);
   } else {
     if (secondNumber === null) {
       secondNumber = value;
     } else {
       secondNumber += value;
     }
-    populateDisplay(secondNumber);
+    populateDisplay(secondNumber, false);
   }
 }
 
@@ -84,7 +84,7 @@ function clearCalculator() {
   secondNumber = null;
   operator = null;
   updatingFirstNumber = true;
-  populateDisplay(0);
+  populateDisplay(0, false);
 }
 
 let firstNumber = null;
@@ -122,10 +122,10 @@ buttonContainer.addEventListener("click", e => {
   } else if (type === "backspace") {
     if (updatingFirstNumber && firstNumber !== null) {
       firstNumber = firstNumber.slice(0, (firstNumber.length - 1));
-      populateDisplay(firstNumber);
+      populateDisplay(firstNumber, false);
     } else if (secondNumber !== null) {
       secondNumber = secondNumber.slice(0, (secondNumber.length - 1));
-      populateDisplay(secondNumber);
+      populateDisplay(secondNumber, false);
     }
   }
 })
