@@ -150,5 +150,38 @@ if (type === "backspace" || type === "equals") {
   value = key;
 }
 
+if (type !== undefined) {
+  if (type === "number") {
+    // Check to prevent adding onto the end of a result after pressing equals
+    if (operator === null && updatingFirstNumber === false) {
+      firstNumber = null;
+      updatingFirstNumber = true;
+    }
+    updateNumber(value);
+  } else if (type === "operator") {
+    if (firstNumber !== null && secondNumber !== null) {
+      operate(operator, firstNumber, secondNumber);
+    }
+    updateOperator(value);
+  } else if (type === "equals") {
+    if (firstNumber !== null && secondNumber !== null) {
+      operate(operator, firstNumber, secondNumber);
+      // Prevents reusing the same operator from the last operation if a number
+      // is pressed directly after equals
+      operator = null;
+    }
+  } else if (type === "clear") {
+    clearCalculator();
+  } else if (type === "backspace") {
+    if (updatingFirstNumber && firstNumber !== null) {
+      firstNumber = firstNumber.slice(0, (firstNumber.length - 1));
+      populateDisplay(firstNumber, false);
+    } else if (secondNumber !== null) {
+      secondNumber = secondNumber.slice(0, (secondNumber.length - 1));
+      populateDisplay(secondNumber, false);
+    }
+  }
+}
+
 
 })
