@@ -129,3 +129,26 @@ buttonContainer.addEventListener("click", e => {
     }
   }
 })
+
+document.addEventListener("keydown", e => {
+  types = {
+    number:["0","1","2","3","4","5","6","7","8","9","."],
+    operator:["+","-","/","*"],
+    equals:["=", "Enter"],
+    backspace:["Backspace"]
+  };
+  
+const key = e.key;
+let type;
+for (iteratedType in types) {
+  if (types[iteratedType].some(value => key === value)) type = iteratedType; 
+}
+let value;
+if (type === "backspace" || type === "equals") {
+  value = type;
+} else {
+  value = key;
+}
+
+
+})
