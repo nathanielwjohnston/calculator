@@ -11,3 +11,8 @@
 #calculator-buttons #button-backspace, #calculator-buttons #button-0 {
 	flex-basis: 50%;
 }
+
+#calculator-display {
+	width: 200px;
+	text-align: right;
+}
