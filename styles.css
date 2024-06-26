@@ -28,5 +28,13 @@
 
 #calculator-display {
 	width: 200px;
+	height: 40px;
 	text-align: right;
+	font-size: 20px;
+	border: 1px solid;
+	border-radius: 2px;
+	padding: 2px;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
 }
