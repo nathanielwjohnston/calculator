@@ -7,3 +7,7 @@
 #calculator-buttons button {
 	flex-basis: 25%;
 }
+
+#calculator-buttons #button-backspace, #calculator-buttons #button-0 {
+	flex-basis: 50%;
+}
