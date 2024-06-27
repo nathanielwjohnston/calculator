@@ -25,6 +25,7 @@
 	font-size: 30px;
 	border: 2px solid rgb(197, 219, 252);
 	border-radius: 5px;
+	outline: none;
 }
 
 #calculator-buttons #button-backspace, #calculator-buttons #button-0 {
