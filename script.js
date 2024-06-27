@@ -51,6 +51,9 @@ function populateDisplay(value, isResult) {
   } else if (value.charAt(0) === ".") {
     value = "0" + value;
   }
+  if (value === "") {
+    value = 0;
+  }
   display.textContent = value;
 }
 
