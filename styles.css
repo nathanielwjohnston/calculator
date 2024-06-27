@@ -16,6 +16,7 @@
 	display: flex;
 	flex-wrap: wrap;
 	width: 300px;
+	margin-top: 4px;
 }
 
 #calculator-buttons button {
@@ -39,4 +40,16 @@
 	display: flex;
 	justify-content: center;
 	flex-direction: column;
+}
+
+.numbers {
+	background-color: rgb(81, 159, 228);
+}
+
+.operators {
+	background-color: rgb(218, 163, 62);
+}
+
+.clear {
+	background-color: rgb(233, 77, 77);
 }
